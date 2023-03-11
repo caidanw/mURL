@@ -56,7 +56,7 @@ app.post("/api/shorten", (req, res) => {
   console.log(`Added URL mapping: ${shortUrl} -> ${longUrl}`);
 
   // Return the short URL with the current request hostname
-  res.json({ shortUrl: `${req.protocol}://${req.hostname}/${shortUrl}` });
+  res.json({ shortUrl: `${req.protocol}://${req.hostname}:${PORT}/${shortUrl}` });
 });
 
 app.get("/:shortUrl", (req, res) => {
