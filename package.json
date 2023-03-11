@@ -1,0 +1,17 @@
+{
+  "name": "murl",
+  "version": "1.0.0",
+  "description": "mURL (minimal URL) is a modern URL shortener with support for custom aliases",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Caidan Williams",
+  "license": "SEE LICENSE IN LICENSE",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "shortid": "^2.2.16",
+    "valid-url": "^1.0.9"
+  }
+}
