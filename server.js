@@ -1,8 +1,8 @@
+const fs = require("fs");
 const express = require("express");
 const bodyParser = require("body-parser");
 const shortid = require("shortid");
 const validUrl = require("valid-url");
-const fs = require("fs");
 
 const app = express();
 const PORT = 3000;
