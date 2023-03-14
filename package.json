@@ -4,14 +4,20 @@
   "description": "mURL (minimal URL) is a modern URL shortener with support for custom aliases",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon app.js",
+    "frontend": "npx nodemon --exec "npm run build" -e "html css" -w ./public",
+    "build": "npx tailwindcss build -i public/main.css -o public/output.css"
   },
   "author": "Caidan Williams",
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
+    "autoprefixer": "^10.4.14",
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
+    "nodemon": "^2.0.21",
     "shortid": "^2.2.16",
+    "tailwindcss": "^3.2.7",
     "valid-url": "^1.0.9"
   }
 }
