@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx nodemon app.js",
-    "frontend": "npx nodemon --exec "npm run build" -e "html css" -w ./public",
+    "frontend": "npx nodemon --exec 'npm run build' -e 'html css' -w ./public",
     "build": "npx tailwindcss build -i public/main.css -o public/output.css"
   },
   "author": "Caidan Williams",
