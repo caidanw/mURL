@@ -9,6 +9,7 @@ const PORT = 3000;
 
 // Set up middleware
 app.use(bodyParser.json());
+app.use(express.static("public"));
 
 // Set up database
 const DB_FILE = "urls.json";
@@ -32,34 +33,31 @@ app.post("/api/shorten", (req, res) => {
   }
 
   // Check if a custom short URL was provided
-  let shortUrl;
+  let shortName;
   if (customUrl) {
     // Make sure the custom URL is not already in use
     if (urls[customUrl]) {
       console.log(`Custom URL already in use: ${customUrl}`);
       return res.status(400).json({ error: "Custom URL already in use" });
     }
-    // Check if the custom URL starts with "api"
-    if (customUrl.startsWith("api")) {
-      console.log(`Custom URL cannot start with 'api': ${customUrl}`);
-      return res.status(400).json({ error: "Custom URL cannot start with 'api'" });
-    }
-    shortUrl = customUrl;
+    shortName = customUrl;
   } else {
     // Generate a short URL using shortid
-    shortUrl = shortid.generate();
+    shortName = shortid.generate();
   }
 
   // Save the mapping from short URL to long URL in the database
-  urls[shortUrl] = longUrl;
+  urls[shortName] = longUrl;
   fs.writeFileSync(DB_FILE, JSON.stringify(urls, null, 2));
+
+  const shortUrl = `${req.protocol}://${req.hostname}:${PORT}/r/${shortName}`;
   console.log(`Added URL mapping: ${shortUrl} -> ${longUrl}`);
 
   // Return the short URL with the current request hostname
-  res.json({ shortUrl: `${req.protocol}://${req.hostname}:${PORT}/${shortUrl}` });
+  res.json({ shortUrl });
 });
 
-app.get("/:shortUrl", (req, res) => {
+app.get("/r/:shortUrl", (req, res) => {
   const shortUrl = req.params.shortUrl;
 
   // Look up the long URL from the database using the short URL
