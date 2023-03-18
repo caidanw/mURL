@@ -2,38 +2,25 @@
 <html>
   <head>
     <title>mURL</title>
-    <link href="./output.css" rel="stylesheet" />
-		<script type="text/javascript" src="./app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
+    <link rel="stylesheet" href="./main.css" />
+    <script defer type="text/javascript" src="./app.js"></script>
     <script type="text/javascript" src="https://livejs.com/live.js"></script>
   </head>
-  <body class="bg-zinc-400">
-    <main class="container mx-auto my-4 p-4 bg-zinc-300 rounded">
-      <div class="flex justify-center mb-4">
-        <h1 class="text-3xl font-semibold">Minimal URL</h1>
-      </div>
+  <body>
+    <h1 class="text-3xl font-semibold">Minimal URL</h1>
 
-      <div class="grid md:grid-cols-2 gap-2">
-        <p class="text-lg">Enter a URL to shorten:</p>
-        <input type="text" id="urlInput" class="text-lg rounded px-2" />
-
-        <p class="text-lg">Customize the short URL (optional):</p>
-        <input type="text" id="customInput" class="text-lg rounded px-2" />
-
-        <button
-          class="text-lg md:col-start-2 px-2 bg-zinc-200 rounded outline-2 outline-sky-700 hover:outline"
-          onclick="shorten()"
-        >
-          Shorten
+    <div class="flex flex-v">
+      <input type="text" id="urlInput" placeholder="URL to Shorten" />
+      <input type="text" id="customInput" placeholder="Custom Alias (optional)" />
+      <button onclick="shorten()">Shorten</button>
+      <div class="flex space-between wrap">
+        <input id="shortUrl" class="grow" readonly ></input>
+        <button id="copy" onclick="copy()">
+          Copy
         </button>
-
-        <p class="text-lg">Shortened URL:</p>
-        <div class="flex gap-2">
-          <p id="shortUrl" class="grow text-lg bg-zinc-200 rounded px-2"></p>
-          <button id="copy" class="text-lg bg-zinc-200 px-2 rounded outline-2 outline-sky-700 hover:outline" onclick="copy()">
-            Copy
-          </button>
-        </div>
       </div>
-    </main>
+    </div>
   </body>
 </html>

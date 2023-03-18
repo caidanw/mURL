@@ -1,3 +1,21 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.space-between {
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.flex-v {
+  flex-direction: column;
+}
+
+.grow {
+  flex-grow: 1;
+}

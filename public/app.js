@@ -1,5 +1,5 @@
 const shortUrlElem = document.getElementById("shortUrl");
-shortUrlElem.innerText = `${location.href}r/...`;
+shortUrlElem.value = `${location.href}r/...`;
 
 function shorten() {
   // Get the input URL and custom short URL (if any)
@@ -14,7 +14,7 @@ function shorten() {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       // Update the UI with the shortened URL
       var shortUrl = JSON.parse(xhr.responseText).shortUrl;
-      shortUrlElem.innerText = shortUrl;
+      shortUrlElem.value = shortUrl;
     }
   };
 
